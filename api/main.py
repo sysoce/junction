@@ -1,4 +1,9 @@
+__requires__ = [
+    'cherrypy_cors',
+]
+
 import cherrypy
+import cherrypy_cors
 import sqlalchemy
 import datetime
 from sqlalchemy.ext.declarative import declarative_base
@@ -33,7 +38,7 @@ class ConsumptionForecast(Power, Base):
 
 
 class ElectricityManager(object):
-	
+
     @cherrypy.expose
     @cherrypy.tools.json_out()
     def get_past_production(self, user_id=None):
@@ -173,10 +178,19 @@ class ElectricityManager(object):
         finally:
             session.close()
 
+    @classmethod
+    def run(cls):
+        cherrypy_cors.install()
+        config = {
+            '/': {
+                'cors.expose.on': True,
+            },
+        }
+        engine = create_engine('postgresql://postgres:example@postgres:5432/postgres', echo=True)
+        Session = sessionmaker(bind=engine)
+        Base.metadata.create_all(engine)
+        cherrypy.config.update({'server.socket_host': '0.0.0.0'})
+        cherrypy.quickstart(cls(), config=config)
 
-if __name__ == '__main__':
-    engine = create_engine('postgresql://postgres:example@postgres:5432/postgres', echo=True)
-    Session = sessionmaker(bind=engine)
-    Base.metadata.create_all(engine)
-    cherrypy.config.update({'server.socket_host': '0.0.0.0'})
-    cherrypy.quickstart(ElectricityManager(), '/')
+
+__name__ == '__main__' and ElectricityManager.run()
