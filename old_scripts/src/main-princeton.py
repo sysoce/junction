@@ -38,7 +38,6 @@ for i in range(len(energy)):
     if np.isnan(energy[i]):
         energy[i] = (energy[i-1] + energy[i+1])/2
 
-print(times)
 #mon_hour = [ [getTime(x)[0],getTime(x)[1]] for x in times ]
 winhours=48
 inthours=2

@@ -1,0 +1,5 @@
+.DS_Store
+.Desktop
+.env
+*.sublime-project
+*.sublime-workspace
