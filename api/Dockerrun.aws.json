@@ -6,7 +6,14 @@
         "host": {
           "sourcePath": "/home/ec2-user/postgresql"
         }
+      },
+      {
+        "name": "uid_stuff",
+        "host": {
+          "sourcePath": "/etc/passwd"
+        }
       }
+
     ],
     "containerDefinitions": [
       {
@@ -32,7 +39,7 @@
         "mountPoints": [
             {
               "sourceVolume": "postgresql",
-              "containerPath": "/var/lib/postgresql"
+              "containerPath": "/var/lib/postgresql/data"
             }
         ],
         "environment": [

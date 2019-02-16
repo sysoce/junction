@@ -9,7 +9,7 @@ with open("princeton.csv") as fp:
             if key[-1] == "W":
                 request = {}
                 request["timestamp"] = timestamp
-                request["user_id"] = key
+                request["user_id"] = key.split(".")[0]
                 request["power"] = row[key]
                 if not request["power"]:
                     request["power"] = 0.

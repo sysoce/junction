@@ -2,7 +2,7 @@ import cherrypy
 import sqlalchemy
 import datetime
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Integer, String, create_engine, Float, DateTime
+from sqlalchemy import Column, Integer, String, create_engine, Float, DateTime, UniqueConstraint
 from sqlalchemy.orm import sessionmaker
 
 Base = declarative_base()
@@ -13,6 +13,7 @@ class Power(object):
     user_id = Column(String)
     power = Column(Float)
     timestamp = Column(DateTime)
+    unique = UniqueConstraint('user_id', 'timestamp')
 
     def to_dict(self):
         row = {"user_id": self.user_id, "power": self.power, "timestamp": self.timestamp.strftime(TIMESTAMP_FORMAT)}
