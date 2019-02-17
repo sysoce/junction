@@ -78,7 +78,7 @@ num_h_layers = 1
 
 print('setting up the model and the trainer')
 # model  = ConsumCastV2(1,hidden_size,num_h_layers)
-model  = ConsumCastV1(1,hidden_size,num_h_layers)
+model  = ConsumCastV2(1,hidden_size,num_h_layers)
 
 print('choosing building and loading the model')
 
