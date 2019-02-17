@@ -129,7 +129,7 @@ consumptionForecastPower = productionForecastPower.map(x => x * 0.5 + 42);
 
 var productionForecastConfig = {
 	elementId: 'production_forecast',
-	title: 'Production and Consumption Forecast',
+	title: 'Campus - Production and Consumption Forecast',
 	trace: [
 		{
 			name: 'Consumption forecast',
