@@ -84,6 +84,9 @@ consumptionTime = consumptionData.map(function (obj) {
 
 productionTime = consumptionTime
 productionPower = consumptionPower.map(x => x * 2);
+console.log(productionPower)
+productionPower = [16, 28, 15, 6, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.1, 15, 20, 26, 28, 22, 25, 23, 15, 1, 0, 0, 0]
+console.log(productionPower)
 
 var consumptionConfig = {
 	elementId: 'consumption',
