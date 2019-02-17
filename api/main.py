@@ -1,7 +1,3 @@
-__requires__ = [
-    'cherrypy_cors',
-]
-
 import cherrypy
 import cherrypy_cors
 import sqlalchemy
@@ -178,19 +174,12 @@ class ElectricityManager(object):
         finally:
             session.close()
 
-    @classmethod
-    def run(cls):
-        cherrypy_cors.install()
-        config = {
-            '/': {
-                'cors.expose.on': True,
-            },
-        }
-        engine = create_engine('postgresql://postgres:example@postgres:5432/postgres', echo=True)
-        Session = sessionmaker(bind=engine)
-        Base.metadata.create_all(engine)
-        cherrypy.config.update({'server.socket_host': '0.0.0.0'})
-        cherrypy.quickstart(cls(), config=config)
 
-
-__name__ == '__main__' and ElectricityManager.run()
+if __name__ == '__main__':
+    cherrypy_cors.install()
+    cherrypy.config.update({'cors.expose.on': True})
+    cherrypy.config.update({'server.socket_host': '0.0.0.0'})
+    engine = create_engine('postgresql://postgres:example@postgres:5432/postgres', echo=True)
+    Session = sessionmaker(bind=engine)
+    Base.metadata.create_all(engine)
+    cherrypy.quickstart(ElectricityManager())

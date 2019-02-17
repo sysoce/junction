@@ -1,25 +1,10 @@
 {
     "AWSEBDockerrunVersion": 2,
-    "volumes": [
-      {
-        "name": "postgresql",
-        "host": {
-          "sourcePath": "/home/ec2-user/postgresql"
-        }
-      },
-      {
-        "name": "uid_stuff",
-        "host": {
-          "sourcePath": "/etc/passwd"
-        }
-      }
-
-    ],
     "containerDefinitions": [
       {
         "name": "forecast_api",
         "memory": 128,
-        "image": "688073117095.dkr.ecr.us-east-2.amazonaws.com/forecast_api:20190216_1",
+        "image": "688073117095.dkr.ecr.us-east-2.amazonaws.com/forecast_api:20190217_1",
         "essential": true,
         "portMappings": [
           {
@@ -36,12 +21,6 @@
         "image": "postgres",
         "memory": 128,
         "essential": true,
-        "mountPoints": [
-            {
-              "sourceVolume": "postgresql",
-              "containerPath": "/var/lib/postgresql/data"
-            }
-        ],
         "environment": [
             {
               "name": "POSTGRES_PASSWORD",
