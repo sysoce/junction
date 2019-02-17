@@ -90,7 +90,7 @@ console.log(productionPower)
 
 var consumptionConfig = {
 	elementId: 'consumption',
-	title: '1927Hall - Consumption and Production',
+	title: 'Consumption and Production Forecast',
 	trace: [
 		{
 			name: 'Consumption',
@@ -151,5 +151,5 @@ var productionForecastConfig = {
 //
 document.addEventListener("DOMContentLoaded", function() {
 	plotPowerTime(consumptionConfig);
-	plotPowerTime(productionForecastConfig);
+	// plotPowerTime(productionForecastConfig);
 });
