@@ -1,3 +1,4 @@
 cherrypy
+cherrypy_cors
 sqlalchemy
 psycopg2-binary
