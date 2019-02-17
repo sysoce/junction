@@ -125,7 +125,7 @@ productionForecastTime = productionForecastData.map(function (obj) {
 
 
 consumptionForecastTime = productionForecastTime
-consumptionForecastPower = productionForecastPower.map(x => x * 2);
+consumptionForecastPower = productionForecastPower.map(x => x * 0.5 + 42);
 
 var productionForecastConfig = {
 	elementId: 'production_forecast',
